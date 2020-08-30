@@ -13,10 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','GuestController@index')->name('guest.index');//muestro todas las entradas de todos los usuarios
 
-Auth::routes();
+Auth::routes();//maneja el login
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');//muestro los titulos de entradas del usuario logueado y cuando hace click redirijo a entries.show
+
+
+Route::get('/entries/create', 'EntryController@create')->name('entries.create');//me muestra la vista de crear entrada
+Route::post('/entries','EntryController@store')->name('entries.store');//guarda una entrada nueva en la bd
+
+
+Route::get('/entries/{entry}','GuestController@show')->name('entries.show');//cuando hacen click en el titulo de home llamo al metodo show del guestcontroller, traigo la entrada y muestro la vista  entries.show.blade.php
+
+Route::get('/entries/{entry}/edit','EntryController@edit')->name('entries.edit');
+
+Route::patch('/entries/{entry}','EntryController@update')->name('entries.update');
+
+
+Route::get('/users/{user}','UserController@show')->name('user.show');
+
+//Route::get('/entries/{entry}','EntryController@show')->name('users.show');
+
