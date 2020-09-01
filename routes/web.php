@@ -24,11 +24,13 @@ Route::get('/entries/create', 'EntryController@create')->name('entries.create');
 Route::post('/entries','EntryController@store')->name('entries.store');//guarda una entrada nueva en la bd
 
 
-Route::get('/entries/{entry}','GuestController@show')->name('entries.show');//cuando hacen click en el titulo de home llamo al metodo show del guestcontroller, traigo la entrada y muestro la vista  entries.show.blade.php
+Route::get('/entries/{entryBySlug}','GuestController@show')->name('entries.show');//cuando hacen click en el titulo de home llamo al metodo show del guestcontroller, traigo la entrada y muestro la vista  entries.show.blade.php
 
 Route::get('/entries/{entry}/edit','EntryController@edit')->name('entries.edit');
+//->middleware('can:update,entry');
 
 Route::patch('/entries/{entry}','EntryController@update')->name('entries.update');
+//>middleware('can:update,entry'); Otra forma de evitar que alguien actualice algo que no es suyo malditos hackers mira todo lo que hay que hacer
 
 
 Route::get('/users/{user}','UserController@show')->name('user.show');

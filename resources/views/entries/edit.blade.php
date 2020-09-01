@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form action="{{route('entries.update',$entry->slug.'-'.$entry->id)}}" method="post">
+                    <form action="{{route('entries.update',$entry)}}" method="post">
                     	@method('PATCH')
                     	 @csrf
                     	<div class="form-group ">
