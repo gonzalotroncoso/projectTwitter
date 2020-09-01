@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Entry;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function show(User $user){
-    	return view('user.show',compact('user'));
+    	$entries = Entry::where('user_id',$user->id)->paginate(5);
+    	return view('user.show',compact('user','entries'));
 
     }
 }

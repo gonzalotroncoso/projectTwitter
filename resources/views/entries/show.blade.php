@@ -21,7 +21,7 @@
 
             </div>
             @if($entry->user_id === auth()->id())
-            <a href="{{route('entries.edit',$entry)}}" class="btn btn-primary btn-block mt-4">Edit entry</a>
+            <a href="{{route('entries.edit',$entry->slug.'-'.$entry->id)}}" class="btn btn-primary btn-block mt-4">Edit entry</a>
             @endif
         </div>
     </div>
