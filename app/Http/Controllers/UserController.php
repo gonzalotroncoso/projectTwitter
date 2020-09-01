@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function show(User $user){
-    	$entries = Entry::where('user_id',$user->id)->paginate(5);
+    	$entries = Entry::where('user_id',$user->id)->paginate(10);
     	return view('user.show',compact('user','entries'));
 
     }
